@@ -1,3 +1,7 @@
+using EstoqueBackend.Data;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

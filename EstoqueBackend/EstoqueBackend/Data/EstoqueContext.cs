@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EstoqueBackend.Data
 {
+
     public class EstoqueContext : DbContext
     {
-        public DbSet<Produto> Produtos {  get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        //public DbSet<Cliente> Clientes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=Estoque;User Id=postgres;Password=root;");
+            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=Estoque;Username=postgres;Password=root;");
         }
     }
 }
