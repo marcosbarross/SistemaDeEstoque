@@ -45,5 +45,27 @@ namespace EstoqueBackend.Controllers
                 }
             }
         }
+        [Route("/RemoverItem")]
+        [HttpDelete]
+        public IActionResult RemoveItem([FromBody] ProdutoDTO produtoDTO)
+        {
+            using (var contexto = new EstoqueContext())
+            {
+                var produtoExistente = contexto.Produtos.FirstOrDefault(p => p.Nome == produtoDTO.Nome || p.Id == produtoDTO.Id);
+
+                if (produtoExistente != null)
+                {
+                    contexto.Produtos.Remove(produtoExistente);
+                    contexto.SaveChanges();
+                    return Ok();
+                }
+
+                else
+                {
+                    return BadRequest("Produto não existe");
+                }
+            }
+        }
+
     }
 }
